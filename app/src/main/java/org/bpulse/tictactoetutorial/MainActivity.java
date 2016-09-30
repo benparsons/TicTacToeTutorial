@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -100,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
   public void setMessage(String message) {
     final TextView tvMessage = (TextView) findViewById(R.id.tvMessage);
     tvMessage.setText(message);
+
+    Toast.makeText(this, message, Toast.LENGTH_LONG).show();
   }
 
   public void setScore(String score) {
