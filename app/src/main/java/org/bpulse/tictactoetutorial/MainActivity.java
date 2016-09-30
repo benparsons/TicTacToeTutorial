@@ -7,11 +7,14 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
   public final String[] boardArray = new String[9];
   public int turnCount = 0;
+  public int xWins = 0;
+  public int oWins = 0;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +71,17 @@ public class MainActivity extends AppCompatActivity {
         (boardArray[0] != "" && boardArray[0] == boardArray[4] && boardArray[0] == boardArray[8]) || // down diagonal
         (boardArray[6] != "" && boardArray[6] == boardArray[4] && boardArray[6] == boardArray[2]) // up diagonal
      ) {
-      Log.i("winner", getTurn() + " wins.");
+      setMessage(getTurn() + " wins.");
+
+      if (getTurn() == "X") xWins++;
+      if (getTurn() == "O") oWins++;
+
+      setScore(String.format("X has %d points, while O has %d points.", xWins, oWins));
 
       return true;
     }
     else if (turnCount == 8) {
-      Log.i("draw", "what a shame, a draw");
+      setMessage("what a shame, a draw");
 
       return true;
     }
@@ -87,5 +95,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     turnCount = 0;
+  }
+
+  public void setMessage(String message) {
+    final TextView tvMessage = (TextView) findViewById(R.id.tvMessage);
+    tvMessage.setText(message);
+  }
+
+  public void setScore(String score) {
+    final TextView tvScore = (TextView) findViewById(R.id.tvScore);
+    tvScore.setText(score);
   }
 }

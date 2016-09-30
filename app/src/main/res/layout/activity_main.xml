@@ -14,11 +14,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="Hello World!"
+        android:id="@+id/tvMessage"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is another line!"/>
+        android:text="This is another line!"
+        android:id="@+id/tvScore"/>
     <GridView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
