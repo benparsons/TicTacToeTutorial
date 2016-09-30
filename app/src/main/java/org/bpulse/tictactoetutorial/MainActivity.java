@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     setContentView(R.layout.activity_main);
 
     final ArrayAdapter<String> arrayAdapter =
-            new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, boardArray);
+            new ArrayAdapter<String>(this, R.layout.tile, boardArray);
     final GridView board = (GridView)findViewById(R.id.gvBoard);
 
     board.setAdapter(arrayAdapter);
