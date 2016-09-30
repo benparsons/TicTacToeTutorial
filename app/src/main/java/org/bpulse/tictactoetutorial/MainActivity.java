@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
           boardArray[position] = getTurn();
           arrayAdapter.notifyDataSetChanged();
 
+          checkState();
+
           turnCount++;
           Log.i("turn count", String.valueOf(turnCount));
         }
@@ -52,5 +54,28 @@ public class MainActivity extends AppCompatActivity {
     else {
       return "O";
     }
+  }
+
+  public Boolean checkState() {
+    if ((boardArray[0] != "" && boardArray[0] == boardArray[1] && boardArray[0] == boardArray[2]) || // top
+        (boardArray[3] != "" && boardArray[3] == boardArray[4] && boardArray[3] == boardArray[5]) || // middle
+        (boardArray[6] != "" && boardArray[6] == boardArray[7] && boardArray[6] == boardArray[8]) || // bottom
+        (boardArray[0] != "" && boardArray[0] == boardArray[3] && boardArray[0] == boardArray[6]) || // left
+        (boardArray[1] != "" && boardArray[1] == boardArray[4] && boardArray[1] == boardArray[7]) || // middle
+        (boardArray[2] != "" && boardArray[2] == boardArray[5] && boardArray[2] == boardArray[8]) || // right
+        (boardArray[0] != "" && boardArray[0] == boardArray[4] && boardArray[0] == boardArray[8]) || // down diagonal
+        (boardArray[6] != "" && boardArray[6] == boardArray[4] && boardArray[6] == boardArray[2]) // up diagonal
+     ) {
+      Log.i("winner", getTurn() + " wins.");
+
+      return true;
+    }
+    else if (turnCount == 8) {
+      Log.i("draw", "what a shame, a draw");
+
+      return true;
+    }
+
+    return false;
   }
 }
