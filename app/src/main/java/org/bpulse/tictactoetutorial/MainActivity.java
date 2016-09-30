@@ -2,6 +2,8 @@ package org.bpulse.tictactoetutorial;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 
@@ -20,8 +22,16 @@ public class MainActivity extends AppCompatActivity {
 
     board.setAdapter(arrayAdapter);
 
+    board.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        boardArray[position] = "X";
+        arrayAdapter.notifyDataSetChanged();
+      }
+    });
+
     for (int i = 0; i < boardArray.length; i++) {
-      boardArray[i] = "X";
+      boardArray[i] = "";
     }
   }
 }
