@@ -27,11 +27,16 @@ public class MainActivity extends AppCompatActivity {
     board.setOnItemClickListener(new AdapterView.OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        boardArray[position] = getTurn();
-        arrayAdapter.notifyDataSetChanged();
+        if (boardArray[position] == "") {
+          boardArray[position] = getTurn();
+          arrayAdapter.notifyDataSetChanged();
 
-        turnCount++;
-        Log.i("turn count", String.valueOf(turnCount));
+          turnCount++;
+          Log.i("turn count", String.valueOf(turnCount));
+        }
+        else {
+          Log.i("illegal move", "there is already a piece at that position");
+        }
       }
     });
 
