@@ -22,5 +22,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="This is another line!"/>
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numColumns="3"
+            android:id="@+id/gvBoard"></GridView>
     </LinearLayout>
 </RelativeLayout>
