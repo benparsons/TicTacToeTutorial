@@ -31,10 +31,14 @@ public class MainActivity extends AppCompatActivity {
           boardArray[position] = getTurn();
           arrayAdapter.notifyDataSetChanged();
 
-          checkState();
-
-          turnCount++;
-          Log.i("turn count", String.valueOf(turnCount));
+          Boolean needsRestart = checkState();
+          if (needsRestart) {
+            setupBoard();
+          }
+          else {
+            turnCount++;
+            Log.i("turn count", String.valueOf(turnCount));
+          }
         }
         else {
           Log.i("illegal move", "there is already a piece at that position");
@@ -42,9 +46,7 @@ public class MainActivity extends AppCompatActivity {
       }
     });
 
-    for (int i = 0; i < boardArray.length; i++) {
-      boardArray[i] = "";
-    }
+    setupBoard();
   }
 
   public String getTurn() {
@@ -77,5 +79,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     return false;
+  }
+
+  public void setupBoard() {
+    for (int i = 0; i < boardArray.length; i++) {
+      boardArray[i] = "";
+    }
+
+    turnCount = 0;
   }
 }
