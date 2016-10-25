@@ -10,6 +10,8 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.ads.*;
+
 public class MainActivity extends AppCompatActivity {
 
   public final String[] boardArray = new String[9];
