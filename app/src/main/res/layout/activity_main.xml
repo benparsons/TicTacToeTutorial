@@ -28,5 +28,9 @@
         android:id="@+id/gvBoard"
         android:verticalSpacing="10dp"
         android:horizontalSpacing="10dp"></GridView>
-
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/native_ad_container"></LinearLayout>
 </LinearLayout>
